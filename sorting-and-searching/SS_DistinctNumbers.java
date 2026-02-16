@@ -1,34 +1,26 @@
 import java.io.*; 
 import java.util.*; 
 
-public class IP_Permutations {
+public class SS_DistinctNumbers {
     private static final long MOD = 1000000007; 
-    
     public static void main(String[] args) throws IOException {
-        if (System.getProperty("ONLINE_JUDGE") == null) { 
-            PrintStream ps = new PrintStream(new File("/Users/kzaydahmed/Desktop/Practice_Pro/cses/output.txt")); 
-            InputStream is = new FileInputStream("/Users/kzaydahmed/Desktop/Practice_Pro/cses/input.txt"); 
-            System.setIn(is); 
-            System.setOut(ps); 
-        } 
+        // if (System.getProperty("ONLINE_JUDGE") == null) { 
+        //     PrintStream ps = new PrintStream(new File("/Users/kzaydahmed/Desktop/Practice_Pro/cses/output.txt")); 
+        //     InputStream is = new FileInputStream("/Users/kzaydahmed/Desktop/Practice_Pro/cses/input.txt"); 
+        //     System.setIn(is); 
+        //     System.setOut(ps); 
+        // } 
         
         FastScanner in = new FastScanner(); 
         int N = in.nextInt(); 
-        
-        if (N == 1)
-            System.out.println("1 ");
-        else if (N <= 3) 
-            System.out.println("NO SOLUTION");
-        else {
-            StringBuilder sb = new StringBuilder(); 
-            for (int i = 2; i <= N; i += 2) {
-                sb.append(i).append(" "); 
-            }
-            for (int i = 1; i <= N; i += 2) {
-                sb.append(i).append(" "); 
-            }
-            System.out.println(sb);
+        Map<Integer, Integer> map = new HashMap<>(); 
+
+        for (int i = 0; i < N; i++) {
+            int value = in.nextInt(); 
+            map.put(value, map.getOrDefault(value, 0)+1); 
         }
+
+        System.out.println(map.size());
     }    
 
     static class FastScanner {

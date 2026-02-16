@@ -12,26 +12,26 @@ public class IP_IncreasingArray {
         //     System.setOut(ps); 
         // } 
         
-        FastScanner in = new FastScanner(); 
+        ReadInput in = new ReadInput(); 
+
         int N = in.nextInt(); 
-        long[] arr = new long[N]; 
+        long[] A = new long[N]; 
+
         for (int i = 0; i < N; i++) {
-            arr[i] = in.nextInt(); 
+            A[i] = in.nextLong(); 
         }
-
-        long minOperations = 0; 
-
+        long count = 0; 
         for (int i = 1; i < N; i++) {
-            if (arr[i-1] > arr[i]) {
-                long dif = arr[i-1]-arr[i]; 
-                minOperations += dif; 
-                arr[i] += dif; 
+            if (A[i-1] > A[i]) {
+                long difference = A[i-1]-A[i]; 
+                A[i] += difference; 
+                count += difference; 
             }
         }
-        System.out.println(minOperations);
+        System.out.println(count);
     }    
 
-    static class FastScanner {
+    static class ReadInput {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer("");
 

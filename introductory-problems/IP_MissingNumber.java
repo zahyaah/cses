@@ -1,7 +1,7 @@
 import java.io.*; 
 import java.util.*; 
 
-public class IP_TrailingZeroes {
+public class IP_MissingNumber {
     private static final long MOD = 1000000007; 
     
     public static void main(String[] args) throws IOException {
@@ -12,17 +12,20 @@ public class IP_TrailingZeroes {
         //     System.setOut(ps); 
         // } 
         
-        FastScanner in = new FastScanner(); 
-        int N = in.nextInt(); 
-        int count = 0; 
-        for (int i = 1; i <= N; i += 5) {
-            count++; 
+        ReadInput in = new ReadInput(); 
+
+        int T = in.nextInt(); 
+        long total = T*(T+1L)/2; 
+        long sum = 0; 
+        
+        for (int index = 0; index < T-1; index++) {
+            sum += in.nextInt(); 
         }
 
-        System.out.println(count);
+        System.out.println(total-sum);
     }    
 
-    static class FastScanner {
+    static class ReadInput {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer("");
 

@@ -1,8 +1,8 @@
 import java.io.*; 
 import java.util.*; 
 
-public class IP_TrailingZeroes {
-    private static final long MOD = 1000000007; 
+public class DP_DiceCombinations {
+    private static final int MOD = 1000000007; 
     
     public static void main(String[] args) throws IOException {
         // if (System.getProperty("ONLINE_JUDGE") == null) { 
@@ -14,13 +14,20 @@ public class IP_TrailingZeroes {
         
         FastScanner in = new FastScanner(); 
         int N = in.nextInt(); 
-        int count = 0; 
-        for (int i = 1; i <= N; i += 5) {
-            count++; 
+        
+        int[] dp = new int[N+1]; 
+        dp[0] = 1; 
+
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= 6; j++) {
+                if (j <= i)
+                    dp[i] = (dp[i] + dp[i-j])%MOD; 
+            }
         }
 
-        System.out.println(count);
+        System.out.println(dp[N]);
     }    
+
 
     static class FastScanner {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

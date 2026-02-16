@@ -12,36 +12,25 @@ public class IP_Repetitions {
         //     System.setOut(ps); 
         // } 
         
-        // FastScanner in = new FastScanner(); 
-        Scanner in = new Scanner(System.in); 
+        ReadInput in = new ReadInput(); 
+
         String S = in.next(); 
         int N = S.length(); 
-        in.close(); 
+        int max = Integer.MIN_VALUE; 
 
-        if (N == 0) { 
-            System.out.println(0); 
-            return;
-        }
-
-        int MAX = 0; 
-        int end = 0; 
-        int count = 1;  
-
-        while (end < N - 1) { 
-            if (S.charAt(end) == S.charAt(end + 1)) {
-                count++; 
-            } else {
-                MAX = Math.max(count, MAX); 
-                count = 1;
+        int start = 0, end = 0; 
+        while (end < N) {
+            if (S.charAt(start) != S.charAt(end)) {
+                max = Math.max(max, end-start); 
+                start = end; 
             }
             end++; 
         }
-        
-        MAX = Math.max(count, MAX);
-        System.out.println(MAX);
+        max = Math.max(max, end-start); 
+        System.out.println(max);
     }    
 
-    static class FastScanner {
+    static class ReadInput {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer("");
 
